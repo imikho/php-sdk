@@ -1,4 +1,4 @@
-# Swagger\Client\CountriesApi
+# OFT\CountriesApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available countries.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CountriesApi();
+$api_instance = new OFT\Api\CountriesApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 $filter_region = array("filter_region_example"); // string[] | Filtration by region.
@@ -73,7 +73,7 @@ Returns country with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CountriesApi();
+$api_instance = new OFT\Api\CountriesApi();
 $id = "id_example"; // string | Unique ID.
 
 try {

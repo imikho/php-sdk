@@ -1,4 +1,4 @@
-# Swagger\Client\BanksApi
+# OFT\BanksApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available banks
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\BanksApi();
+$api_instance = new OFT\Api\BanksApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 $filter_sort_code = "filter_sort_code_example"; // string | Filtering by banks code.
@@ -75,7 +75,7 @@ Returns bank with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\BanksApi();
+$api_instance = new OFT\Api\BanksApi();
 $id = "id_example"; // string | Unique ID.
 
 try {

@@ -1,4 +1,4 @@
-# Swagger\Client\MerchantIndustriesApi
+# OFT\MerchantIndustriesApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available merchant industries.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\MerchantIndustriesApi();
+$api_instance = new OFT\Api\MerchantIndustriesApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 $filter_name = "filter_name_example"; // string | Filtering by name.
@@ -69,7 +69,7 @@ Returns merchant industry with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\MerchantIndustriesApi();
+$api_instance = new OFT\Api\MerchantIndustriesApi();
 $id = "id_example"; // string | Unique ID.
 
 try {

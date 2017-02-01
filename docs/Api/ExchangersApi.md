@@ -1,4 +1,4 @@
-# Swagger\Client\ExchangersApi
+# OFT\ExchangersApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available exchangers.<br> Rates export standards is represented by: 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ExchangersApi();
+$api_instance = new OFT\Api\ExchangersApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 $filter_name = "filter_name_example"; // string | Filtering by name.
@@ -73,7 +73,7 @@ Returns exchanger with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\ExchangersApi();
+$api_instance = new OFT\Api\ExchangersApi();
 $id = "id_example"; // string | Unique ID.
 
 try {

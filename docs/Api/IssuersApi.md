@@ -1,4 +1,4 @@
-# Swagger\Client\IssuersApi
+# OFT\IssuersApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available currency issuers.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\IssuersApi();
+$api_instance = new OFT\Api\IssuersApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 
@@ -67,7 +67,7 @@ Returns issuer with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\IssuersApi();
+$api_instance = new OFT\Api\IssuersApi();
 $id = "id_example"; // string | Unique ID.
 
 try {

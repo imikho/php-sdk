@@ -1,4 +1,4 @@
-# Swagger\Client\CurrenciesApi
+# OFT\CurrenciesApi
 
 All URIs are relative to *https://api.openfintech.io/v1*
 
@@ -20,7 +20,7 @@ Returns all available currencies.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CurrenciesApi();
+$api_instance = new OFT\Api\CurrenciesApi();
 $page_number = 56; // int | Current page number.
 $page_size = 56; // int | Page size.<br>*Default value: 100*
 $filter_code_iso_alpha3 = "filter_code_iso_alpha3_example"; // string | Filtering by ISO code.
@@ -79,7 +79,7 @@ Returns currency with specific ID.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new Swagger\Client\Api\CurrenciesApi();
+$api_instance = new OFT\Api\CurrenciesApi();
 $id = "id_example"; // string | Unique ID.
 
 try {
