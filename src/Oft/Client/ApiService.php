@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Oft\Client;
 
@@ -11,11 +11,12 @@ use WoohooLabs\Yang\JsonApi\Request\JsonApiRequestBuilder;
 
 /**
  * Class ApiService
+ *
  * @package Oft\Client
  */
 class ApiService
 {
-    const RESOURCE_URL = 'https://api.openfintech.io';
+    const BASE_URL = 'https://api.openfintech.io';
 
     /** @var string */
     private $resourceName;
@@ -23,11 +24,12 @@ class ApiService
     /** @var string */
     private $apiVersion;
 
-    /** @var JsonApiRequestBuilder  */
+    /** @var JsonApiRequestBuilder */
     private $requestBuilder;
 
     /**
      * ApiService constructor.
+     *
      * @param $resourceName
      * @param string $apiVersion
      * @param array $config
@@ -46,17 +48,16 @@ class ApiService
      */
     public function getResources()
     {
-        $lastPage  = false;
+        $lastPage = false;
         $pageCount = 1;
 
-        while($lastPage === false) {
+        while ($lastPage === false) {
 
             $this->requestBuilder->setUriQueryParam('page[number]', $pageCount);
             $request = $this->getRequest();
             $response = $this->client->sendRequest($request);
-
             if (!$response->isSuccessful([200])) {
-                 throw new \RuntimeException(sprintf('Can`t get resource from URL %s', $request->getUri()));
+                throw new \RuntimeException(sprintf('Can not get resource from URL %s', $request->getUri()));
             }
 
             $resources = $response->document()->primaryResources();
@@ -70,24 +71,33 @@ class ApiService
                 yield $data;
             }
 
-            $pageCount ++;
+            $pageCount++;
         }
 
     }
 
     /**
      * @param $id
+     *
      * @return \WoohooLabs\Yang\JsonApi\Schema\ResourceObject
      */
     public function getResource($id)
     {
         $request = $this->requestBuilder
-            ->setUri(sprintf('%s/%s', $this->getResourceUri(), $id))
-            ->setMethod('GET')
+            ->setUri($this->getSingleResourceUri($id))
             ->fetch()
             ->getRequest();
 
-        return $this->client->sendRequest($request)->document()->primaryResource();
+        $response = $this->client->sendRequest($request);
+
+        if (!$response->isSuccessful([200])) {
+            throw new \RuntimeException(
+                sprintf('Can not get resource from URL %s', $request->getUri()),
+                $response->getStatusCode()
+            );
+        }
+
+        return $response->document()->primaryResource();
     }
 
     /**
@@ -109,7 +119,17 @@ class ApiService
      */
     private function getResourceUri()
     {
-        return sprintf('%s/%s/%s', self::RESOURCE_URL, $this->apiVersion, $this->resourceName);
+        return sprintf('%s/%s/%s', self::BASE_URL, $this->apiVersion, $this->resourceName);
+    }
+
+    /**
+     * @param $id
+     *
+     * @return string
+     */
+    private function getSingleResourceUri($id)
+    {
+        return sprintf('%s/%s', $this->getResourceUri(), $id);
     }
 
     /**
@@ -127,5 +147,4 @@ class ApiService
     {
         $this->requestBuilder = $requestBuilder;
     }
-
 }
