@@ -1,11 +1,14 @@
+sudo: required
 language: php
 php:
     - '7.0'
     - '7.1'
-    - nightly
 
+services:
+  - docker
+  
 before_script:
-  - sudo apt-get install libcurl4-openssl-dev -y
+  - docker pull php:$TRAVIS_PHP_VERSION
   - composer install -o
 
 after_script:
@@ -17,6 +20,6 @@ after_script:
 
 install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - travis_retry composer self-update && composer --version
+  - wget -N https://getcomposer.org/composer.phar
 
-script: phpunit --configuration phpunit.xml
+script: tests/docker-run.sh

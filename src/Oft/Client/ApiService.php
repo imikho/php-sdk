@@ -27,14 +27,17 @@ class ApiService
     /** @var JsonApiRequestBuilder */
     private $requestBuilder;
 
+    /** @var JsonApiClient */
+    private $client;
+
     /**
      * ApiService constructor.
      *
-     * @param $resourceName
+     * @param string $resourceName
      * @param string $apiVersion
      * @param array $config
      */
-    public function __construct($resourceName, $apiVersion = 'v1', $config = [])
+    public function __construct(string $resourceName, string $apiVersion = 'v1', array $config = [])
     {
         $this->requestBuilder = new JsonApiRequestBuilder(new Request('', ''));
         $this->client = new JsonApiClient(GuzzleClient::createWithConfig($config));
@@ -77,11 +80,11 @@ class ApiService
     }
 
     /**
-     * @param $id
+     * @param string $id
      *
      * @return \WoohooLabs\Yang\JsonApi\Schema\ResourceObject
      */
-    public function getResource($id)
+    public function getResource(string $id)
     {
         $request = $this->requestBuilder
             ->setUri($this->getSingleResourceUri($id))
@@ -123,11 +126,11 @@ class ApiService
     }
 
     /**
-     * @param $id
+     * @param string $id
      *
      * @return string
      */
-    private function getSingleResourceUri($id)
+    private function getSingleResourceUri(string $id)
     {
         return sprintf('%s/%s', $this->getResourceUri(), $id);
     }
