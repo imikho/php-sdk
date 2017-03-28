@@ -2,6 +2,13 @@ build:
     environment:
         php:
             version: "7.1.0"
+    tests:
+        override:
+            -
+                command: 'vendor/bin/phpunit --configuration=phpunit.xml'
+                coverage:
+                    file: 'build/logs/clover.xml'
+                    format: 'clover'
 filter:
     excluded_paths: [tests/*]
 
@@ -20,8 +27,3 @@ checks:
         fix_line_ending: true
         fix_identation_4spaces: true
         fix_doc_comments: true
-
-tools:
-    external_code_coverage:
-        timeout: 600
-        runs: 1
