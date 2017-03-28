@@ -1,0 +1,21 @@
+{
+  "name": "openfintech/php-sdk",
+  "description": "",
+  "keywords": [  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "oft-developers",
+      "email": "info@openfintech.io"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "require": {
+    "woohoolabs/yang": "^1.0",
+    "php-http/guzzle6-adapter": "^1.1"
+  }
+}
