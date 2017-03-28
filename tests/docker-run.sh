@@ -2,4 +2,5 @@
 
 docker run -it --rm \
     -v $(pwd)/:/tests -w=/tests php:${TRAVIS_PHP_VERSION} \
-     vendor/bin/phpunit --configuration phpunit.xml
+     pecl install xdebug \
+     && vendor/bin/phpunit --configuration phpunit.xml
