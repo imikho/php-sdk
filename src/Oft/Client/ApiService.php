@@ -150,4 +150,12 @@ class ApiService
     {
         $this->requestBuilder = $requestBuilder;
     }
+
+    /**
+     * @param JsonApiClient $client
+     */
+    public function setClient(JsonApiClient $client)
+    {
+        $this->client = $client;
+    }
 }
