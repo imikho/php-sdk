@@ -30,6 +30,9 @@ class ApiService
     /** @var JsonApiClient */
     private $client;
 
+    /** @var string */
+    private $baseUrl = self::BASE_URL;
+
     /**
      * ApiService constructor.
      *
@@ -122,7 +125,7 @@ class ApiService
      */
     private function getResourceUri()
     {
-        return sprintf('%s/%s/%s', self::BASE_URL, $this->apiVersion, $this->resourceName);
+        return sprintf('%s/%s/%s', $this->baseUrl, $this->apiVersion, $this->resourceName);
     }
 
     /**
@@ -157,5 +160,21 @@ class ApiService
     public function setClient(JsonApiClient $client)
     {
         $this->client = $client;
+    }
+
+    /**
+     * @param string $baseUrl
+     */
+    public function setBaseUrl(string $baseUrl)
+    {
+        $this->baseUrl = $baseUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
     }
 }
