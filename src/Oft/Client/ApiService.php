@@ -61,6 +61,7 @@ class ApiService
 
             $this->requestBuilder->setUriQueryParam('page[number]', $pageCount);
             $this->requestBuilder->setUriQueryParam('page[size]', 100);
+            $this->requestBuilder->setUriQueryParam('sort', 'id');
             $request = $this->getRequest();
             $response = $this->client->sendRequest($request);
             if (!$response->isSuccessful([200])) {
